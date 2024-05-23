@@ -128,9 +128,16 @@
    map
    for_each
    sort
+<<<<<<< Updated upstream
    to_list
    to_sequence
    copy))
+||||||| Stash base
+   to_list))
+=======
+   to_list
+   to_pairlist))
+>>>>>>> Stashed changes
 
 (define-primitive-class PairList list
   #:lift-declaration
@@ -304,6 +311,7 @@
   #:static-infos ((#%call-result #,(get-treelist-static-infos)))
   (treelist-delete d pos))
 
+<<<<<<< Updated upstream
 (define/arity (MutableList.cons a d)
   #:inline
   #:primitive (mutable-treelist-cons!)
@@ -324,6 +332,14 @@
   #:primitive (mutable-treelist-delete!)
   (mutable-treelist-delete! d pos))
 
+||||||| Stash base
+=======
+(define/method (List.to_pairlist d)
+  #:inline
+  #:static-infos ((#%call-result #,list-static-infos))
+  (treelist->list d))
+
+>>>>>>> Stashed changes
 (define (nonempty-treelist? l)
   (and (treelist? l) ((treelist-length l) . > . 0)))
 
